@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "noImplicitAny": false,
+    "types": [
+      "@types/meteor",
+      "@types/meteor-accounts-phone",
+      "@types/meteor-accounts"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "module": "commonjs",
+    "paths": {
+      "api/*": ["./api/server/*"]
+    },
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "api/server/*.ts",
+    "api/private/*.ts"
+  ], 
+  "exclude": [
+    "node_modules",
+    "api/node_modules",
+    "api"
+  ]
+}
+

@@ -1,0 +1,35 @@
+  <p>
+    Messages
+  </p>
+   
+  <div class="messages-page-content">
+    <div class="messages"> 
+        <div *ngFor="let day of messagesDayGroups | async" class="day-wrapper">
+
+            <div *ngIf="!day.today" class="day-timestamp">{{day.timestamp}}</div>
+            <div *ngIf="day.today" class="day-timestamp">Today</div>
+
+            <div *ngFor="let message of day.messages" class="message-wrapper">
+                <div [class]="'message message-' + message.ownership">
+                  <div *ngIf="message.type == 'text'" class="message-content message-content-text">{{message.content}}</div>
+                  <span class="message-timestamp">{{ message.createdAt | amDateFormat: 'HH:mm' }}</span>
+              </div>
+            </div>
+
+            
+        </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div  class="messages-page-footer">
+      <input [(ngModel)]="message" (keypress)="onInputKeypress($event)" class="message-editor" placeholder="Type a message">
+   
+      <div>
+        <button [disabled]="!message" class="message-editor-button" (click)="sendTextMessage()"> SEND
+        </button>
+  
+      </div>
+    </div>
+  </footer>

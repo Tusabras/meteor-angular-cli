@@ -1,0 +1,26 @@
+<p>
+  Chats
+</p>
+
+<content class="chats-page-content">
+  <div class="chats">
+    <table *ngFor="let chat of chats | async">
+      <td class="chat" (click)="showMessages(chat)">
+        <div>
+          <img class="chat-picture" [src]="chat.picture">
+          <div class="chat-info">
+            <h2 class="chat-title">{{chat.title}} </h2>
+  
+            <span *ngIf="chat.lastMessage" class="last-message">
+              <p *ngIf="chat.lastMessage.type == 'text'" class="last-message-content last-message-content-text">{{chat.lastMessage.content}}</p>
+              <span class="last-message-timestamp">{{ chat.lastMessage.createdAt | amCalendar }}</span>
+            </span>
+          </div>
+        </div>
+        <div class="chat-options">
+          <button (click)="removeChat(chat)" class="option optremove">Remove</button>
+        </div>
+      </td>
+    </table>
+  </div>
+</content>
